@@ -1,0 +1,9 @@
+{
+  "type": "sqlite",
+  "database": "./data/app.db",
+  "synchronize": false,
+  "dropSchema": false,
+  "logging": true,
+  "logger": "advanced-console",
+  "entities": ["src/model/**/*.ts"]
+}
