@@ -1,9 +1,19 @@
 import { Context } from "koa";
-import { response } from "../helper/response";
+import { getManager } from "typeorm";
+import { User, IUser } from "../entity/user";
 
 class IndexSvrc {
-  async demo(ctx: Context) {
-    response.success(ctx, { name: "Jarry Chung" });
+  async query() {
+    const userRepo = getManager().getRepository(User);
+    const users: IUser[] = await userRepo.find();
+    return users;
+  }
+
+  async create(data: IUser) {
+    const userRepo = getManager().getRepository(User);
+    const newUser = userRepo.create(data);
+    await userRepo.save(newUser);
+    return newUser;
   }
 }
 

@@ -11,7 +11,8 @@ interface IRoutes {
 
 const router: Router = new Router();
 const routes: IRoutes[] = [
-  { path: "/index", method: "get", ctrl: indexCtrl.demo },
+  { path: "/index", method: "get", ctrl: indexCtrl.query },
+  { path: "/index", method: "post", ctrl: indexCtrl.create },
 ];
 
 export function route() {

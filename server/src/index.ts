@@ -1,12 +1,23 @@
 import Koa from "koa";
 import bodyParser from "koa-bodyparser";
+import logger from "koa-logger";
+import { createConnection } from "typeorm";
 import { route } from "./router";
 
-const app: Koa = new Koa();
+const Port = 8080;
 
-app.use(bodyParser());
-app.use(route());
+createConnection()
+  .then(async () => {
+    const app: Koa = new Koa();
 
-app.listen(8080);
+    app.use(logger());
+    app.use(bodyParser());
+    app.use(route());
 
-console.log("Server running on http://localhost:8080");
+    app.listen(Port);
+
+    console.log(`Server running on http://localhost:${Port}`);
+  })
+  .catch((err) => {
+    console.log("[typeorm] Connection error: ", err);
+  });
