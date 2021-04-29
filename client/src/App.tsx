@@ -1,21 +1,20 @@
+import { useAuth } from 'components/AuthProvider';
+import { LoadingPage } from 'pages/loading/Loading';
+import { LoginPage } from 'pages/login/Login';
+import { MainPage } from 'pages/Root';
 import './App.css';
 
 function App() {
+  const { user, isLoading } = useAuth()
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        isLoading
+          ? user
+            ? <MainPage />
+            : <LoginPage />
+          : <LoadingPage />
+      }
     </div>
   );
 }
