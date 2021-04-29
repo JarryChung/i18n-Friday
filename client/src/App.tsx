@@ -10,10 +10,10 @@ function App() {
     <div className="App">
       {
         isLoading
-          ? user
+          ? <LoadingPage />
+          : user
             ? <MainPage />
             : <LoginPage />
-          : <LoadingPage />
       }
     </div>
   );
