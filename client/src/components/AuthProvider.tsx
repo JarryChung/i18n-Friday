@@ -2,9 +2,14 @@ import React, { ReactNode, useContext, useState } from 'react';
 import { http } from 'helpers/http';
 import { useMount } from 'helpers/hooks';
 import {
-  getToken, login as loginFn, logout as logoutFn, register as registerFn, 
-  IAuthRequset, IAuthResponse, IUser
-} from 'helpers/auth'
+  getToken,
+  login as loginFn,
+  logout as logoutFn,
+  register as registerFn,
+  IAuthRequset,
+  IAuthResponse,
+  IUser,
+} from 'helpers/auth';
 
 const initUser = async () => {
   let user = null;
@@ -16,7 +21,7 @@ const initUser = async () => {
     isLoading = false;
   }
   return { user, isLoading };
-}
+};
 
 const AuthContext = React.createContext<
   | {

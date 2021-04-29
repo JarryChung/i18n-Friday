@@ -5,17 +5,9 @@ import { RootPage } from 'pages/Root';
 import './App.css';
 
 function App() {
-  const { user, isLoading } = useAuth()
+  const { user, isLoading } = useAuth();
   return (
-    <div className="App">
-      {
-        isLoading
-          ? <LoadingPage />
-          : user
-            ? <RootPage />
-            : <LoginPage />
-      }
-    </div>
+    <div className="App">{isLoading ? <LoadingPage /> : user ? <RootPage /> : <LoginPage />}</div>
   );
 }
 
