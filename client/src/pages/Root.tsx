@@ -1,1 +1,1 @@
-export const MainPage = () => <div>MainPage</div>;
+export const RootPage = () => <div>MainPage</div>;

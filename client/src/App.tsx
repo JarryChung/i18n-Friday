@@ -1,7 +1,7 @@
 import { useAuth } from 'components/AuthProvider';
 import { LoadingPage } from 'pages/loading/Loading';
 import { LoginPage } from 'pages/login/Login';
-import { MainPage } from 'pages/Root';
+import { RootPage } from 'pages/Root';
 import './App.css';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
         isLoading
           ? <LoadingPage />
           : user
-            ? <MainPage />
+            ? <RootPage />
             : <LoginPage />
       }
     </div>
