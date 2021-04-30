@@ -13,7 +13,7 @@ import {
 
 const initUser = async () => {
   let user = null;
-  let isLoading = true;
+  let isLoading = false; // TODO 联调后设置为 true
   const token = getToken();
   if (token) {
     const data = await http.get('/me', { token });
