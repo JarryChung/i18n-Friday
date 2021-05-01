@@ -38,7 +38,7 @@ const request = (url: string, options: IRequestOptions) => {
     : (config.body = JSON.stringify(data || {}));
 
   return window
-    .fetch(`${baseUrl}/${url}`, config)
+    .fetch(`${baseUrl}${url}`, config)
     .then(async (response) => {
       if (response.status === 401) {
         logout();
