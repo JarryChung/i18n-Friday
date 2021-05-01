@@ -12,6 +12,7 @@ export interface IAuthResponse {
 export interface IAuthRequset {
   username: string;
   password: string;
+  password2?: string;
 }
 
 export const getToken = () => window.localStorage.getItem(authTokenKey);
