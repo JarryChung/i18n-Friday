@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Button, Card, Form, Input } from 'antd';
+import { Button, Card, Form, Input, Divider } from 'antd';
 import { useAuth } from 'components/AuthProvider';
 import { IAuthRequset } from 'helpers/auth';
 import { useState } from 'react';
@@ -41,6 +41,8 @@ export const LoginPage = () => {
             </LongButton>
           </Form.Item>
         </Form>
+
+        <Divider />
 
         <LongButton type="link" onClick={() => setIsRegister(!isRegister)}>
           {isRegister ? '已经有帐号了？直接登录' : '没有账号？注册新账号'}
