@@ -12,7 +12,7 @@ import {
 } from 'helpers/auth';
 
 const initUser = async () => {
-  let user = null;
+  let user: IUser = { id: '1121', name: 'Jarry Chung', token: 'jc1121', avatar: '' }; // TODO 联调后设置为 null
   let isLoading = false; // TODO 联调后设置为 true
   const token = getToken();
   if (token) {

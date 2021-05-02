@@ -4,6 +4,7 @@ import { http } from './http';
 export interface IUser {
   id: string;
   name: string;
+  avatar: string;
   token: string;
 }
 export interface IAuthResponse {
