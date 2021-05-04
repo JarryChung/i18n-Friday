@@ -41,7 +41,7 @@ export const FilterBar = (props: FilterBarProps) => {
         />
       </div>
       <div>
-        <Label>创建时间</Label>
+        <Label>更新时间</Label>
         <RangePicker style={{ width: '70%' }} onChange={(_, v) => setRangeData(v)} />
       </div>
     </Row>

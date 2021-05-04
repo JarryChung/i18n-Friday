@@ -1,13 +1,22 @@
 import styled from '@emotion/styled';
 import { Header } from 'components/Header';
-import { HashRouter } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
+import { Management } from './project/Management';
+import { Detail } from './project/Detail';
+import { Role } from './role/Role';
 
 export const RootPage = () => {
   return (
     <HashRouter>
       <Header />
 
-      <Container>123</Container>
+      <Container>
+        <Switch>
+          <Route exact path="/project" component={Management} />
+          <Route exact path="/project/:id" component={Detail} />
+          <Route exact path="/role" component={Role} />
+        </Switch>
+      </Container>
     </HashRouter>
   );
 };
