@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { PlusCircleTwoTone } from '@ant-design/icons';
 import { Tooltip, Table, Button, Popconfirm } from 'antd';
 import { FilterBar, IFilterData } from 'components/FilterBar';
-import { ColumnsType } from 'antd/lib/table';
+import { ColumnsType, TablePaginationConfig } from 'antd/lib/table';
 import { useEffect, useState } from 'react';
 import { ProjectDrawer } from './components/ProjectDrawer';
 
@@ -31,11 +31,13 @@ const defaultProjectModalData: IProject = {
   roles: [{ name: '', permission: { r: false, w: false, d: false } }],
   modules: [''],
 };
+const defaultPageSize = 20;
 
 export const Management = () => {
   const [filterData, setFilterData] = useState<IFilterData>({ keyword: '', rangeDate: ['', ''] });
   const [tableData, setTableData] = useState<IProject[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [pagination, setPagination] = useState({ total: 0, current: 1, pageSize: defaultPageSize });
   const [isProjectModalVisible, setIsProjectModalVisible] = useState(false);
   const [projectModalMode, setProjectModalMode] = useState<'add' | 'edit'>('add');
   const [projectModalData, setProjectModalData] = useState<IProject>(defaultProjectModalData);
@@ -57,7 +59,11 @@ export const Management = () => {
     console.log(record);
   };
 
-  const fetchTableData = () => {
+  const onTableChange = (pagination: TablePaginationConfig) => {
+    fetchTableData(pagination.current, pagination.pageSize);
+  };
+
+  const fetchTableData = (current: number = 1, pageSize: number = pagination.pageSize) => {
     setIsLoading(true);
     const { keyword, rangeDate } = filterData;
     const data = { keyword, startDate: rangeDate[0], endDate: rangeDate[1] };
@@ -65,7 +71,7 @@ export const Management = () => {
 
     console.log(data);
     const list: IProject[] = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < pageSize; i++) {
       list.push({
         id: '11111' + i,
         name: '22222' + i,
@@ -78,6 +84,7 @@ export const Management = () => {
     }
     setTimeout(() => {
       setTableData(list);
+      setPagination({ current, pageSize, total: 100 });
       setIsLoading(false);
     }, 1000);
   };
@@ -142,6 +149,8 @@ export const Management = () => {
         size="small"
         rowKey="id"
         scroll={{ y: 'calc(100vh - 28rem)' }}
+        pagination={pagination}
+        onChange={onTableChange}
       />
 
       <ProjectDrawer
