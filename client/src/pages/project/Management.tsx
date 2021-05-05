@@ -22,7 +22,8 @@ export interface IProject {
 }
 type TColumns = ColumnsType<IProject>;
 
-const defaultProjectModalData: IProject = {
+export const defaultPageSize = 20;
+const defaultProjectDrawerData: IProject = {
   id: '',
   name: '',
   updateTime: '',
@@ -31,27 +32,26 @@ const defaultProjectModalData: IProject = {
   roles: [{ name: '', permission: { r: false, w: false, d: false } }],
   modules: [''],
 };
-const defaultPageSize = 20;
 
 export const Management = () => {
   const [filterData, setFilterData] = useState<IFilterData>({ keyword: '', rangeDate: ['', ''] });
   const [tableData, setTableData] = useState<IProject[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [pagination, setPagination] = useState({ total: 0, current: 1, pageSize: defaultPageSize });
-  const [isProjectModalVisible, setIsProjectModalVisible] = useState(false);
-  const [projectModalMode, setProjectModalMode] = useState<'add' | 'edit'>('add');
-  const [projectModalData, setProjectModalData] = useState<IProject>(defaultProjectModalData);
+  const [isProjectDrawerVisible, setIsProjectDrawerVisible] = useState(false);
+  const [ProjectDrawerMode, setProjectDrawerMode] = useState<'add' | 'edit'>('add');
+  const [ProjectDrawerData, setProjectDrawerData] = useState<IProject>(defaultProjectDrawerData);
 
   const onAddProject = () => {
-    setProjectModalMode('add');
-    setIsProjectModalVisible(true);
-    setProjectModalData(defaultProjectModalData);
+    setProjectDrawerMode('add');
+    setIsProjectDrawerVisible(true);
+    setProjectDrawerData(defaultProjectDrawerData);
   };
 
   const onEditProject = (record: IProject) => {
-    setProjectModalMode('edit');
-    setIsProjectModalVisible(true);
-    setProjectModalData(record);
+    setProjectDrawerMode('edit');
+    setIsProjectDrawerVisible(true);
+    setProjectDrawerData(record);
   };
 
   const onDeleteProject = (record: IProject) => {
@@ -154,10 +154,10 @@ export const Management = () => {
       />
 
       <ProjectDrawer
-        data={projectModalData}
-        mode={projectModalMode}
-        isVisible={isProjectModalVisible}
-        setIsVisible={setIsProjectModalVisible}
+        data={ProjectDrawerData}
+        mode={ProjectDrawerMode}
+        isVisible={isProjectDrawerVisible}
+        setIsVisible={setIsProjectDrawerVisible}
       />
     </div>
   );

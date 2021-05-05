@@ -6,14 +6,14 @@ import { LangsBlock } from './LangsBlock';
 import { RolesBlock } from './RolesBlock';
 import { ModulesBlock } from './ModuleBlock';
 
-interface IProjectModalProps {
+interface IProjectDrawerProps {
   isVisible: boolean;
   setIsVisible: (visible: boolean) => void;
   mode: 'add' | 'edit';
   data: IProject;
 }
 
-export const ProjectDrawer = (props: IProjectModalProps) => {
+export const ProjectDrawer = (props: IProjectDrawerProps) => {
   const [formRef] = Form.useForm();
   const { data, mode, isVisible, setIsVisible } = props;
   const [drawerData, setDrawerData] = useState(cloneDeep(data));
