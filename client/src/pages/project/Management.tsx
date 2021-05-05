@@ -23,7 +23,7 @@ export interface IProject {
 type TColumns = ColumnsType<IProject>;
 
 export const defaultPageSize = 20;
-const defaultProjectDrawerData: IProject = {
+export const defaultProjectDrawerData: IProject = {
   id: '',
   name: '',
   updateTime: '',
