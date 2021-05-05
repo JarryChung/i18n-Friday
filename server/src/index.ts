@@ -1,10 +1,10 @@
-import Koa from "koa";
-import bodyParser from "koa-bodyparser";
-import logger from "koa-logger";
-import { createConnection } from "typeorm";
-import { route } from "./router";
+import Koa from 'koa';
+import bodyParser from 'koa-bodyparser';
+import logger from 'koa-logger';
+import { createConnection } from 'typeorm';
+import { route } from './router';
 
-const Port = 8080;
+const Port = 3001;
 
 createConnection()
   .then(async () => {
@@ -19,5 +19,5 @@ createConnection()
     console.log(`Server running on http://localhost:${Port}`);
   })
   .catch((err) => {
-    console.log("[typeorm] Connection error: ", err);
+    console.log('[typeorm] Connection error: ', err);
   });
