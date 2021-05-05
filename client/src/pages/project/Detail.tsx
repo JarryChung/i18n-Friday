@@ -155,6 +155,11 @@ export const Detail = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    fetchTableData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filterData]);
+
   return (
     <div>
       <Link to="/project">
