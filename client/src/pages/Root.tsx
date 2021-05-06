@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Header } from 'components/Header';
-import { HashRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { Management } from './project/Management';
 import { Detail } from './project/Detail';
 import { Role } from './role/Role';
@@ -12,6 +12,7 @@ export const RootPage = () => {
 
       <Container>
         <Switch>
+          <Redirect exact from="/" to="/project" />
           <Route exact path="/project" component={Management} />
           <Route exact path="/project/:id" component={Detail} />
           <Route exact path="/role" component={Role} />
