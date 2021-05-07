@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
-import { Tooltip, Table, Button, Popconfirm, Skeleton, message } from 'antd';
+import { Tooltip, Table, Popconfirm, Skeleton, message } from 'antd';
 import { ColumnsType, TablePaginationConfig } from 'antd/lib/table';
 import {
   PlusCircleTwoTone,
@@ -10,6 +10,7 @@ import {
 } from '@ant-design/icons';
 import { FilterBar, IFilterData } from 'components/FilterBar';
 import { CopyToClipboard } from 'components/CopyToClipboard';
+import { TextButton } from 'components/StyledLib';
 import { defaultPageSize, IProject, defaultProjectDrawerData } from './Management';
 import { ProjectDrawer } from './components/ProjectDrawer';
 import { PhraseDrawer } from './components/PhraseDrawer';
@@ -94,18 +95,16 @@ export const Detail = () => {
       width: 150,
       render: (_: string, record: IPhrase) => (
         <>
-          <Button type="link" onClick={() => onEditPhrase(record)}>
+          <TextButton color="#1890ff" onClick={() => onEditPhrase(record)}>
             编辑
-          </Button>
+          </TextButton>
           <Popconfirm
             title="确认删除？"
             onConfirm={() => onDeletePhrase(record)}
             okText="确认"
             cancelText="取消"
           >
-            <Button type="link" danger>
-              删除
-            </Button>
+            <TextButton color="#ff4d4f">删除</TextButton>
           </Popconfirm>
         </>
       ),

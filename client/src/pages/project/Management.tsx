@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { PlusCircleTwoTone } from '@ant-design/icons';
-import { Tooltip, Table, Button, Popconfirm } from 'antd';
+import { Tooltip, Table, Popconfirm } from 'antd';
 import { FilterBar, IFilterData } from 'components/FilterBar';
+import { TextButton } from 'components/StyledLib';
 import { ColumnsType, TablePaginationConfig } from 'antd/lib/table';
 import { useEffect, useState } from 'react';
 import { ProjectDrawer } from './components/ProjectDrawer';
@@ -110,18 +111,16 @@ export const Management = () => {
       width: 150,
       render: (_: string, record: IProject) => (
         <>
-          <Button type="link" onClick={() => onEditProject(record)}>
+          <TextButton color="#1890ff" onClick={() => onEditProject(record)}>
             编辑
-          </Button>
+          </TextButton>
           <Popconfirm
             title="确认删除？"
             onConfirm={() => onDeleteProject(record)}
             okText="确认"
             cancelText="取消"
           >
-            <Button type="link" danger>
-              删除
-            </Button>
+            <TextButton color="#ff4d4f">删除</TextButton>
           </Popconfirm>
         </>
       ),
