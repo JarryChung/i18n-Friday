@@ -108,7 +108,7 @@ export const Management = () => {
     {
       dataIndex: 'action',
       title: '操作',
-      width: 150,
+      width: 120,
       render: (_: string, record: IProject) => (
         <>
           <TextButton color="#1890ff" onClick={() => onEditProject(record)}>

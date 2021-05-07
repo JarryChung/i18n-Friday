@@ -81,18 +81,20 @@ export const Detail = () => {
     {
       dataIndex: 'id',
       title: 'ID',
+      align: 'center',
       render: (text: string) => <CopyToClipboard text={text}>{text}</CopyToClipboard>,
     },
     { dataIndex: 'sc', title: '简体中文' },
     { dataIndex: 'tc', title: '繁体中文' },
     { dataIndex: 'en', title: '英文' },
-    { dataIndex: 'module', title: '模块' },
-    { dataIndex: 'updateTime', title: '更新时间' },
-    { dataIndex: 'updater', title: '更新人' },
+    { dataIndex: 'module', title: '模块', align: 'center' },
+    { dataIndex: 'updateTime', title: '更新时间', align: 'center' },
+    { dataIndex: 'updater', title: '更新人', align: 'center' },
     {
       dataIndex: 'action',
       title: '操作',
-      width: 150,
+      align: 'center',
+      width: 120,
       render: (_: string, record: IPhrase) => (
         <>
           <TextButton color="#1890ff" onClick={() => onEditPhrase(record)}>
@@ -109,7 +111,7 @@ export const Detail = () => {
         </>
       ),
     },
-  ].map((item) => ({ align: 'center', ...item }));
+  ];
 
   const fetchProjectData = () => {
     setIsLoadingProject(true);
