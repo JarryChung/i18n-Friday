@@ -9,6 +9,7 @@ import {
   LeftSquareOutlined,
 } from '@ant-design/icons';
 import { FilterBar, IFilterData } from 'components/FilterBar';
+import { CopyToClipboard } from 'components/CopyToClipboard';
 import { defaultPageSize, IProject, defaultProjectDrawerData } from './Management';
 import { ProjectDrawer } from './components/ProjectDrawer';
 import { PhraseDrawer } from './components/PhraseDrawer';
@@ -76,7 +77,11 @@ export const Detail = () => {
   };
 
   const columns: TColumns = [
-    { dataIndex: 'id', title: 'ID' },
+    {
+      dataIndex: 'id',
+      title: 'ID',
+      render: (text: string) => <CopyToClipboard text={text}>{text}</CopyToClipboard>,
+    },
     { dataIndex: 'sc', title: '简体中文' },
     { dataIndex: 'tc', title: '繁体中文' },
     { dataIndex: 'en', title: '英文' },
