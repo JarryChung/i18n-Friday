@@ -1,9 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 export interface IUser {
   id?: number;
   name: string;
-  likes?: number;
+  email: string;
+  password?: string;
 }
 
 @Entity()
@@ -14,6 +15,9 @@ export class User implements IUser {
   @Column()
   name!: string;
 
-  @Column({ default: 0 })
-  likes!: number;
+  @Column()
+  email!: string;
+
+  @Column()
+  password!: string;
 }
