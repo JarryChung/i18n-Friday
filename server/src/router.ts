@@ -1,8 +1,8 @@
-import { Context, Next } from "koa";
-import Router from "koa-router";
-import { indexCtrl } from "./controller";
+import { Context, Next } from 'koa';
+import Router from 'koa-router';
+import { userCtrl } from './controller/user';
 
-type TMethod = "get" | "put" | "post" | "delete";
+type TMethod = 'get' | 'put' | 'post' | 'delete';
 interface IRoutes {
   path: string;
   method: TMethod;
@@ -11,8 +11,9 @@ interface IRoutes {
 
 const router: Router = new Router();
 const routes: IRoutes[] = [
-  { path: "/index", method: "get", ctrl: indexCtrl.query },
-  { path: "/index", method: "post", ctrl: indexCtrl.create },
+  { path: '/login', method: 'post', ctrl: userCtrl.login },
+  { path: '/signup', method: 'post', ctrl: userCtrl.signup },
+  { path: '/users', method: 'get', ctrl: userCtrl.queryList },
 ];
 
 export function route() {

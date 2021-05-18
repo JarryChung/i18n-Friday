@@ -1,7 +1,7 @@
 {
   "type": "sqlite",
   "database": "./data/app.db",
-  "synchronize": false,
+  "synchronize": true,
   "dropSchema": false,
   "logging": true,
   "logger": "advanced-console",
