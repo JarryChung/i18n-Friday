@@ -1,6 +1,7 @@
 import { Context } from 'koa';
 import { IUser } from '../entity/user';
 import { response } from '../helper/response';
+import { filter } from '../helper/utils';
 import { userSvrc } from '../service/user';
 
 interface IAuthRequset {
@@ -18,9 +19,10 @@ class UserCtrl {
     }
   }
 
-  async signup(ctx: Context) {
+  async register(ctx: Context) {
     try {
-      const data = ctx.request.body;
+      const body: IUser = ctx.request.body;
+      const data = filter(body, ['name', 'email', 'password']);
       const result = await userSvrc.createOne(data);
       response.success(ctx, result);
     } catch (err) {

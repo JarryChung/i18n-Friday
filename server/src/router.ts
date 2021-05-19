@@ -12,7 +12,7 @@ interface IRoutes {
 const router: Router = new Router();
 const routes: IRoutes[] = [
   { path: '/login', method: 'post', ctrl: userCtrl.login },
-  { path: '/signup', method: 'post', ctrl: userCtrl.signup },
+  { path: '/signup', method: 'post', ctrl: userCtrl.register },
   { path: '/users', method: 'get', ctrl: userCtrl.queryList },
 ];
 
